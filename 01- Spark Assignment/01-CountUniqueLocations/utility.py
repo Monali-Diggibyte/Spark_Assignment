@@ -8,9 +8,10 @@ def getSparkSession(appname):
         .master("local[2]") \
         .getOrCreate()
     return(spark)
+    print(spark)
 
-def getReadCsvFile(filepath):
-    DF = spark.read.format("csv").options(header=True, inferschema=True, sep=",").load(filepath)
-    return(DF)
-
-def getLocation():
+#def getReadCsvFile(filepath):
+#    DF = spark.read.format("csv").options(header=True, inferschema=True, sep=",").load(filepath)
+#    return(DF)
+#    DF.show()
+# def getLocation():
