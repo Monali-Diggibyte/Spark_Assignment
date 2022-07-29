@@ -32,7 +32,10 @@ print("Count of Unique Locations where each Product is sold: "+ str(joinDF.selec
 ## b) Find out products bought by each user.
 DF2 = joinDF.select('user_id', 'emailid', 'product_description').distinct().orderBy('user_id')
 DF2.show(20, False)
+ProductsPurchase= DF2.select('product_description').orderBy('user_id').show(20, False)
 
 ## c) Total spending done by each user on each product.
 DF3 = joinDF.select('user_id', 'product_description', 'price').distinct().orderBy('user_id')
 DF3.show(20, False)
+TotalSpend = DF3.groupby('product_description').sum('price').show(20, False)
+
