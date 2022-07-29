@@ -8,6 +8,8 @@ spark = SparkSession \
         .getOrCreate()
 print(spark)
 
+
+
 ## Reading user.csv file
 # userDF = getReadCsvFile("./Data/user.csv")
 userDF = spark.read.format("csv").options(header= True, inferschema= True, sep="," ).load("./Data/user.csv")
