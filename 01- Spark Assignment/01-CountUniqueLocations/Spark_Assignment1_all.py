@@ -8,8 +8,6 @@ spark = SparkSession \
         .getOrCreate()
 print(spark)
 
-
-
 ## Reading user.csv file
 # userDF = getReadCsvFile("./Data/user.csv")
 userDF = spark.read.format("csv").options(header= True, inferschema= True, sep="," ).load("./Data/user.csv")
@@ -40,4 +38,3 @@ ProductsPurchase= DF2.select('product_description').orderBy('user_id').show(20, 
 DF3 = joinDF.select('user_id', 'product_description', 'price').distinct().orderBy('user_id')
 DF3.show(20, False)
 TotalSpend = DF3.groupby('product_description').sum('price').show(20, False)
-
